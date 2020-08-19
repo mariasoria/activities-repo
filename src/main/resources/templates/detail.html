@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Activity Details</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+</head>
+<body>
+
+<header th:insert="fragments/header :: main-header">
+</header>
+
+<main role="main">
+    <br/>
+    <h2 class="font-weight-bold text-center text-capitalize" th:text="${activity.name}"></h2>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-5">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-info-tab" data-toggle="pill" href="#v-pills-info" role="tab" aria-controls="v-pills-info" aria-selected="true">Information</a>
+                    <a class="nav-link" id="v-pills-description-tab" data-toggle="pill" href="#v-pills-description" role="tab" aria-controls="v-pills-description" aria-selected="false">Description</a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-7">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-info" role="tabpanel" aria-labelledby="v-pills-info">
+                        <ul>
+                            <li><strong>Category:</strong> <span th:text="${activity.category}"></span></li>
+                            <li><strong>Suitable ages:</strong> <span th:text="${activity.age}"></span></li>
+                            <li><strong>Goal:</strong> <span th:text="${activity.goal}"></span></li>
+                            <li><strong>Material needed:</strong> <span th:text="${activity.material}"></span></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-description" role="tabpanel" aria-labelledby="v-pills-description-tab">
+                        <p th:text="${activity.description}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<footer th:insert="fragments/footer :: footer" class="footer">
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

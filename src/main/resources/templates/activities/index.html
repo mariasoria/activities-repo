@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>ActivitiesRepo | Repository with activities for kids.</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+</head>
+<body>
+
+<header th:insert="fragments/header :: main-header">
+</header>
+
+
+<main role="main">
+
+    <div class="container">
+        <br/>
+        <h2 class="font-weight-bold text-center text-capitalize">LIST OF ACTIVITIES</h2>
+        <hr>
+        <div class="row" th:each="activity: ${activities}">
+            <div class="col-sm-12 col-md-5 text-sm-center text-md-left">
+                <h1 th:text="${activity.name}"></h1>
+            </div>
+            <div class="col-sm-12 col-md-7 text-sm-center text-md-left"> <!--col-md-9 -->
+                <h6 class="card-title"><strong>Category: </strong> <span th:text="${activity.category}"> </span></h6>
+                <h6 class="card-title"><strong>Suitable ages: </strong> <span th:text="${activity.age}"> </span></h6>
+                <p th:text="${activity.description}"></p>
+                <p><a class="btn btn-secondary" th:href="@{/activities/details/{id} (id=${activity.id})}" role="button">View details &raquo;</a></p>
+            </div>
+            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+        </div>
+    </div> <!-- /container -->
+
+</main>
+
+<footer th:insert="fragments/footer :: footer" class="footer">
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
