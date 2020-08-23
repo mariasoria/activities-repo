@@ -1,10 +1,8 @@
 package es.mariasoria.activitiesrepo.service;
 
 import es.mariasoria.activitiesrepo.model.Activity;
-import org.omg.CORBA.ACTIVITY_REQUIRED;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
 

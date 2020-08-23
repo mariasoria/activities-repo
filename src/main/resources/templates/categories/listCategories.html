@@ -1,10 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Index of categories</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+    <!--  It enables to load CSS, JavaScript and images remotely from its servers, such logos, icons...
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+
 </head>
 <body>
-<h1> LIST CATEGORIES </h1>
+
+    <header th:insert="fragments/header :: main-header">
+    </header>
+
+    <!-- Table with categories -->
+    <div class="container">
+        <br/>
+        <h2 class="text-primary font-weight-bold text-center text-capitalize">LIST OF CATEGORIES</h2>
+        <hr>
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <th> ID </th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Edit</th>
+                <th>Delete</th>s
+            </tr>
+            <tr th:each="cat : ${categories}">
+                <td th:text="${cat.id}"></td>
+                <td th:text="${cat.name}"> </td>
+                <td th:text="${cat.description}"> description</td>
+                <td>
+                    <a th:href="@{/categories/edit/{id} (id=${cat.id}) }" class="btn btn-success">Edit</a>
+                </td>
+                <td>
+                    <a href="#" onclick="return confirm('¿Estas seguro?')" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <footer th:insert="fragments/footer :: footer" class="footer">
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
 </body>
 </html>

@@ -1,23 +1,33 @@
 package es.mariasoria.activitiesrepo.controller;
 
+import es.mariasoria.activitiesrepo.model.Category;
+import es.mariasoria.activitiesrepo.service.CategoriesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.jws.WebParam;
 
 @Controller
 @RequestMapping(value="/categories")
 public class CategoriesController {
 
+    @Autowired
+    private CategoriesService categoriesService;
+
     @GetMapping("/index")
-    public String showIndex(){
-        return "index";
+    public String showIndex(Model model){
+        model.addAttribute("categories", categoriesService.findAll());
+        return "categories/listCategories";
     }
 
     @GetMapping("/create")
     public String createCategory(){
-        return null;
+        return "categories/formCategory";
     }
 
-    @GetMapping("/save")
+    @PostMapping("/save")
     public String saveCategory(){
         return null;
     }
@@ -25,8 +35,11 @@ public class CategoriesController {
     @DeleteMapping("/delete")
     public void deleteCategory(){}
 
-    @PutMapping("/edit")
-    public void editCategory(){}
+    @GetMapping("/edit/{id}")
+    public String editCategory(@PathVariable ("id") int idCategory, Model model){
+        model.addAttribute("category", categoriesService.findById(idCategory));
+        return "categories/editCategory";
+    }
 
 
 }
