@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>New activity</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+</head>
+<body>
+
+    <header th:insert="fragments/header :: main-header">
+    </header>
+
+    <br/>
+    <br/>
+    <hr>
+    <div class="container">
+        <div class="card">
+            <h4 class="card-header"><strong>New activity</strong></h4>
+            <div class="card-body">
+                <form th:action="@{/activities/save}" method="post">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" class="form-control" id="name" name="name" required="required">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select class="form-control" id="category" name="category">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Distension</option>
+                                    <option value="2">Team Building</option>
+                                    <option value="3">Learning</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="form-group col-sm-12 col-md-4">
+                            <label for="age">Ages</label>
+                            <select multiple class="custom-select" id="age" name="age">
+                                <option>6-8</option>
+                                <option>8-10</option>
+                                <option>10-12</option>
+                                <option>12-14</option>
+                                <option>14-</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-12 col-md-4">
+                            <label for="goal">Goal</label>
+                            <textarea class="form-control" rows="2" id="goal" name="goal"></textarea>
+                        </div>
+                        <div class="form-group col-sm-12 col-md-4">
+                            <label for="material">Material *</label>
+                            <textarea class="form-control" rows="4" id="material" name="material"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-12">
+                            <label for="description">Description *</label>
+                            <textarea class="form-control" rows="10" id="description" name="description"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" title="Guardar el registro." class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div> <!-- /container -->
+    
+    <footer th:insert="fragments/footer :: footer" class="footer">
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+    <script th:src="@{/tinymce/tinymce.min.js}"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#description',
+            plugins: "textcolor, table lists code",
+            toolbar: " undo redo | bold italic | alignleft aligncenter alignright alignjustify " +
+                "| bullist numlist outdent indent | forecolor backcolor table code"
+        });
+    </script>
+
+</body>
+</html>

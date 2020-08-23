@@ -17,40 +17,39 @@
 </head>
 <body>
 
-<header th:insert="fragments/header :: main-header">
-</header>
+    <header th:insert="fragments/header :: main-header">
+    </header>
 
+    <main role="main">
 
-<main role="main">
-
-    <div class="container">
-        <br/>
-        <h2 class="font-weight-bold text-center text-capitalize">LIST OF ACTIVITIES</h2>
-        <hr>
-        <div class="row" th:each="activity: ${activities}">
-            <div class="col-sm-12 col-md-5 text-sm-center text-md-left">
-                <h1 th:text="${activity.name}"></h1>
+        <div class="container">
+            <br/>
+            <h2 class="font-weight-bold text-center text-capitalize">LIST OF ACTIVITIES</h2>
+            <hr>
+            <div class="row" th:each="activity: ${activities}">
+                <div class="col-sm-12 col-md-5 text-sm-center text-md-left">
+                    <h1 th:text="${activity.name}"></h1>
+                </div>
+                <div class="col-sm-12 col-md-7 text-sm-center text-md-left"> <!--col-md-9 -->
+                    <h6 class="card-title"><strong>Category: </strong> <span th:text="${activity.category}"> </span></h6>
+                    <h6 class="card-title"><strong>Suitable ages: </strong> <span th:text="${activity.age}"> </span></h6>
+                    <!-- <p th:text="${activity.description}"></p> -->
+                    <p><a class="btn btn-secondary" th:href="@{/activities/details/{id} (id=${activity.id})}" role="button">View details &raquo;</a></p>
+                </div>
+                <!-- <hr style="height:2px;border-width:0;color:gray;background-color:gray"> -->
             </div>
-            <div class="col-sm-12 col-md-7 text-sm-center text-md-left"> <!--col-md-9 -->
-                <h6 class="card-title"><strong>Category: </strong> <span th:text="${activity.category}"> </span></h6>
-                <h6 class="card-title"><strong>Suitable ages: </strong> <span th:text="${activity.age}"> </span></h6>
-                <p th:text="${activity.description}"></p>
-                <p><a class="btn btn-secondary" th:href="@{/activities/details/{id} (id=${activity.id})}" role="button">View details &raquo;</a></p>
-            </div>
-            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-        </div>
-    </div> <!-- /container -->
+        </div> <!-- /container -->
 
-</main>
+    </main>
 
-<footer th:insert="fragments/footer :: footer" class="footer">
-</footer>
+    <footer th:insert="fragments/footer :: footer" class="footer">
+    </footer>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 
-</body>
+    </body>
 </html>
