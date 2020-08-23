@@ -27,7 +27,11 @@
         <div class="card">
             <h4 class="card-header"><strong>New activity</strong></h4>
             <div class="card-body">
-                <form th:action="@{/activities/save}" method="post">
+                <form th:action="@{/activities/save}" method="post" th:object="${activity}">
+                    <div th:if="${#fields.hasErrors('*')}" class='alert alert-danger' role='alert'> Por favor corrija los siguientes errores:
+                        <ul>
+                            <li th:each="err : ${#fields.errors('*')}" th:text="${err}" /> </ul>
+                    </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
@@ -79,7 +83,7 @@
             </div>
         </div>
     </div> <!-- /container -->
-    
+
     <footer th:insert="fragments/footer :: footer" class="footer">
     </footer>
 

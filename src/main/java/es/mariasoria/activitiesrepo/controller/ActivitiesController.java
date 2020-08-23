@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -35,13 +34,17 @@ public class ActivitiesController {
 
     // Displays the form to create a new activity
     @GetMapping("/create")
-    public String createActivity(){
+    public String createActivity(Activity activity){
         return "activities/formActivity";
     }
 
     // Saves the new activity
     @PostMapping("/save")
-    public String saveActivity(Activity activity, RedirectAttributes attributes){
+    public String saveActivity(Activity activity, BindingResult result, RedirectAttributes attributes){
+        if(result.hasErrors()){
+            return "activities/formActivity";
+        }
+        attributes.addFlashAttribute("msg", "Activity saved");
         // cuando llegue el objeto activity al controlador
         // se agregara directamente a nuestra lista
         serviceActivity.saveActivity(activity);
