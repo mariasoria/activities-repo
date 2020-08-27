@@ -18,13 +18,6 @@ public class ActivitiesController {
     @Autowired
     private ActivitiesService serviceActivity;
 
-    // Displays the list of activities
-    @GetMapping("/index")
-    public String showIndex(Model model){
-        model.addAttribute("activities", serviceActivity.findAll());
-        return "activities/index";
-    }
-
     // Displays the view with the details of the activity specified by id
     @GetMapping("/details/{id}")
     public String showActivity(@PathVariable ("id") int idActivity, Model model){
@@ -50,11 +43,14 @@ public class ActivitiesController {
         serviceActivity.saveActivity(activity);
         System.out.println("Activity: " + activity);
         // redirect to the index view
-        return "redirect:/activities/index";
+        return "redirect:/index";
     }
 
-    @DeleteMapping("/delete")
-    public void deleteActivity(){}
+    // @DeleteMapping("/delete")
+    @GetMapping("/delete/{id}")
+    public void deleteActivity(@PathVariable ("id") int idActivity){
+
+    }
 
     // Displays the view to edit the activity specified by id
     @GetMapping("/edit/{id}")

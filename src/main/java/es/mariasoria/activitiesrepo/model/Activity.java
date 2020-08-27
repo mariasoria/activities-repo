@@ -2,17 +2,21 @@ package es.mariasoria.activitiesrepo.model;
 
 import lombok.*;
 
+import javax.persistence.*;
+
 /***
  * This class represents the model for an activity
  */
 
 public class Activity {
+
     private Integer id;
     private String name;
     private String age; // suitable ages
     private String material; // material necessary
     private String goal; // goal of the activity
     private String description;
+
     private String category;
 
     public Integer getId() {

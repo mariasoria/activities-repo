@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>New Category</title>
+    <title>Activities Repo | New Category</title>
     <!-- Bootstrap core CSS -->
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -20,7 +20,31 @@
     <header th:insert="fragments/header :: main-header">
     </header>
 
-    <h1> FORM CATEGORY </h1>
+    <main role="main">
+        <div class="container">
+            <div class="card">
+                <h2 class="card-header"> New category </h2>
+                <div class="card-body">
+                    <form th:action="@{/categories/save}" method="post">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="name">Category</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="" required="required">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" rows="10" id="description" name="description"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
     <footer th:insert="fragments/footer :: footer" class="footer">
     </footer>
 

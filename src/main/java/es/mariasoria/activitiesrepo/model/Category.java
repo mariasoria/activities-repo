@@ -1,9 +1,13 @@
 package es.mariasoria.activitiesrepo.model;
 
-import lombok.*;
+import javax.persistence.*;
 
+@Entity
+@Table(name="Categories")
 public class Category {
 
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;

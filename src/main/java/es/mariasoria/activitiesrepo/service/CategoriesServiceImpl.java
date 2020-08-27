@@ -60,4 +60,12 @@ public class CategoriesServiceImpl implements CategoriesService{
     public void saveCategory(Category category) {
         list.add(category);
     }
+
+    // REVIEW THIS METHOD, NOT VERY CLEAR HOW TO DO IT
+    @Override
+    public void deleteCategory(Integer idCategory) {
+        list.remove(idCategory);
+    }
+
+
 }
