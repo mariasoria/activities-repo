@@ -12,7 +12,7 @@ public class ActivitiesServiceImpl implements ActivitiesService {
     private List<Activity> list = null;
 
     public ActivitiesServiceImpl(){
-        list = new LinkedList<Activity>();
+        /*list = new LinkedList<Activity>();
 
         Activity activity1 = new Activity();
         activity1.setId(1);
@@ -20,7 +20,6 @@ public class ActivitiesServiceImpl implements ActivitiesService {
         activity1.setMaterial("Chalk, blackboard, eraser");
         activity1.setGoal("Guessing as many words as possible");
         activity1.setAge("7-10");
-        activity1.setCategory("Learning");
         activity1.setDescription("THE HANGMAN - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut cursus nisi. Vivamus sed arcu odio. " +
                 "Aenean pharetra justo eu feugiat blandit. Sed dictum mi vitae nulla aliquam placerat. Aliquam non porttitor elit. Donec aliquam efficitur egestas. " +
                 "Donec ut risus sit amet lorem ultricies ullamcorper vitae at ligula. Aenean id efficitur enim, condimentum porta nisl. Vivamus a erat lorem. " +
@@ -40,7 +39,6 @@ public class ActivitiesServiceImpl implements ActivitiesService {
         activity2.setMaterial("Puzzles");
         activity2.setGoal("Finishing the puzzles as soon as possible");
         activity2.setAge("7-10");
-        activity2.setCategory("Learning");
         activity2.setDescription("PUZZLES - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut cursus nisi. Vivamus sed arcu odio. " +
                 "Aenean pharetra justo eu feugiat blandit. Sed dictum mi vitae nulla aliquam placerat. Aliquam non porttitor elit. Donec aliquam efficitur egestas. " +
                 "Donec ut risus sit amet lorem ultricies ullamcorper vitae at ligula. Aenean id efficitur enim, condimentum porta nisl. Vivamus a erat lorem. " +
@@ -60,7 +58,6 @@ public class ActivitiesServiceImpl implements ActivitiesService {
         activity3.setMaterial("cards with words/movies/verbs...");
         activity3.setGoal("Guessing as many words as possible");
         activity3.setAge("7-10");
-        activity3.setCategory("Learning");
         activity3.setDescription("CHARADES - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut cursus nisi. Vivamus sed arcu odio. " +
                 "Aenean pharetra justo eu feugiat blandit. Sed dictum mi vitae nulla aliquam placerat. Aliquam non porttitor elit. Donec aliquam efficitur egestas. " +
                 "Donec ut risus sit amet lorem ultricies ullamcorper vitae at ligula. Aenean id efficitur enim, condimentum porta nisl. Vivamus a erat lorem. " +
@@ -80,7 +77,6 @@ public class ActivitiesServiceImpl implements ActivitiesService {
         activity4.setMaterial("balloon...");
         activity4.setGoal("Reply correctly the questions before the balloon explodes");
         activity4.setAge("7-10");
-        activity4.setCategory("Learning");
         activity4.setDescription("HOT POTATO - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut cursus nisi. Vivamus sed arcu odio. " +
                 "Aenean pharetra justo eu feugiat blandit. Sed dictum mi vitae nulla aliquam placerat. Aliquam non porttitor elit. Donec aliquam efficitur egestas. " +
                 "Donec ut risus sit amet lorem ultricies ullamcorper vitae at ligula. Aenean id efficitur enim, condimentum porta nisl. Vivamus a erat lorem. " +
@@ -97,8 +93,7 @@ public class ActivitiesServiceImpl implements ActivitiesService {
         list.add(activity1);
         list.add(activity2);
         list.add(activity3);
-        list.add(activity4);
-
+        list.add(activity4);*/
     }
 
     @Override

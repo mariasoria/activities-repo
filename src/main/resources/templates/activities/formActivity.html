@@ -24,7 +24,7 @@
 
         <div class="container">
             <div class="card">
-                <h4 class="card-header"><strong>New activity</strong></h4>
+                <h4 class="card-header"><strong>Activity details</strong></h4>
                 <div class="card-body">
                     <form th:action="@{/activities/save}" method="post" th:object="${activity}">
                         <div th:if="${#fields.hasErrors('*')}" class='alert alert-danger' role='alert'> Por favor corrija los siguientes errores:
@@ -34,18 +34,16 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group">
-                                    <label for="name">Nombre</label>
-                                    <input type="text" class="form-control" id="name" name="name" required="required">
+                                    <label for="name">Nombre *</label>
+                                    <input type="hidden" th:field="*{id}">
+                                    <input type="text" class="form-control" th:field="*{name}" id="name" name="name" placeholder="Name of the activity" required="required">
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group">
-                                    <label for="category">Category</label>
-                                    <select class="form-control" id="category" name="category">
-                                        <option selected>Choose...</option>
-                                        <option value="1">Distension</option>
-                                        <option value="2">Team Building</option>
-                                        <option value="3">Learning</option>
+                                    <label for="category">Category *</label>
+                                    <select class="form-control" th:field="*{idCategory}" id="category" name="category" required="required">
+                                        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
                                     </select>
                                 </div>
                             </div>
@@ -53,8 +51,8 @@
                         <hr>
                         <div class="row">
                             <div class="form-group col-sm-12 col-md-4">
-                                <label for="age">Ages</label>
-                                <select multiple class="custom-select" id="age" name="age">
+                                <label for="age">Ages *</label>
+                                <select multiple class="custom-select"  id="age" name="age" required="required">
                                     <option>6-8</option>
                                     <option>8-10</option>
                                     <option>10-12</option>
@@ -64,20 +62,20 @@
                             </div>
                             <div class="form-group col-sm-12 col-md-4">
                                 <label for="goal">Goal</label>
-                                <textarea class="form-control" rows="2" id="goal" name="goal"></textarea>
+                                <textarea class="form-control" rows="2" th:field="*{goal}" id="goal" name="goal"></textarea>
                             </div>
                             <div class="form-group col-sm-12 col-md-4">
                                 <label for="material">Material *</label>
-                                <textarea class="form-control" rows="4" id="material" name="material"></textarea>
+                                <textarea class="form-control" rows="4" th:field="*{material}" id="material" name="material" required="required"></textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-12">
                                 <label for="description">Description *</label>
-                                <textarea class="form-control" rows="10" id="description" name="description"></textarea>
+                                <input type="text" class="form-control" th:field="*{description}" id="description" name="description" placeholder="Description of the activity" required="required">
                             </div>
                         </div>
-                        <button type="submit" title="Guardar el registro." class="btn btn-primary">Save</button>
+                        <button type="submit" title="Save the activity" class="btn btn-primary">Save</button>
                     </form>
                 </div>
             </div>

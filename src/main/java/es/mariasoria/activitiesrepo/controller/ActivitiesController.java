@@ -1,7 +1,9 @@
 package es.mariasoria.activitiesrepo.controller;
 
 import es.mariasoria.activitiesrepo.model.Activity;
+import es.mariasoria.activitiesrepo.model.Category;
 import es.mariasoria.activitiesrepo.service.ActivitiesService;
+import es.mariasoria.activitiesrepo.service.CategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,15 @@ public class ActivitiesController {
     @Autowired
     private ActivitiesService serviceActivity;
 
+    @Autowired
+    private CategoriesService categoriesService;
+
+    @GetMapping("/index")
+    public String showIndex(Model model){
+        model.addAttribute("activities", serviceActivity.findAll());
+        return "activities/index";
+    }
+
     // Displays the view with the details of the activity specified by id
     @GetMapping("/details/{id}")
     public String showActivity(@PathVariable ("id") int idActivity, Model model){
@@ -27,7 +38,7 @@ public class ActivitiesController {
 
     // Displays the form to create a new activity
     @GetMapping("/create")
-    public String createActivity(Activity activity){
+    public String createActivity(Activity activity, Model model){
         return "activities/formActivity";
     }
 
@@ -41,9 +52,10 @@ public class ActivitiesController {
         // cuando llegue el objeto activity al controlador
         // se agregara directamente a nuestra lista
         serviceActivity.saveActivity(activity);
-        System.out.println("Activity: " + activity);
+        System.out.println("Activity SAVE: " + activity);
         // redirect to the index view
         return "redirect:/index";
+        //return "redirect:/activities/create";
     }
 
     // @DeleteMapping("/delete")
@@ -57,7 +69,13 @@ public class ActivitiesController {
     public String editActivity(@PathVariable ("id") int idActivity, Model model){
         model.addAttribute("activity", serviceActivity.findById(idActivity));
         // add each element of the model to a variable??? filling the form
-        return "activities/editActivity";
+        return "activities/formActivity";
+    }
+
+    @ModelAttribute
+    public void setGeneric (Model model){
+        model.addAttribute("categories", categoriesService.findAll());
+
     }
 
 

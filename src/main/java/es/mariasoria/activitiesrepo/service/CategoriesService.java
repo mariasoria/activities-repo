@@ -1,5 +1,6 @@
 package es.mariasoria.activitiesrepo.service;
 
+import es.mariasoria.activitiesrepo.model.Activity;
 import es.mariasoria.activitiesrepo.model.Category;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface CategoriesService {
     void saveCategory(Category category);
 
     void deleteCategory(Integer idCategory);
+
 }

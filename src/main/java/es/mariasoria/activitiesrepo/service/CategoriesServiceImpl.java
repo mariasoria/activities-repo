@@ -12,7 +12,7 @@ public class CategoriesServiceImpl implements CategoriesService{
     private List<Category> list = null;
 
     public CategoriesServiceImpl(){
-        list = new LinkedList<Category>();
+        /*list = new LinkedList<Category>();
 
         Category cat1 = new Category();
         cat1.setId(1);
@@ -37,8 +37,7 @@ public class CategoriesServiceImpl implements CategoriesService{
         list.add(cat1);
         list.add(cat2);
         list.add(cat3);
-        list.add(cat4);
-
+        list.add(cat4);*/
     }
 
     @Override

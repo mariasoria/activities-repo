@@ -23,22 +23,29 @@
     <main role="main">
         <div class="container">
             <div class="card">
-                <h2 class="card-header"> New category </h2>
+                <h2 class="card-header"><strong> Details of the category </strong></h2>
                 <div class="card-body">
-                    <form th:action="@{/categories/save}" method="post">
+                    <form th:action="@{/categories/save}" method="post" th:object="${category}">
+                        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger" role="alert">
+                            Por favor corrija los siguientes errores:
+                            <ul>
+                                <li th:each="err: ${#fields.errors('*')}" th:text="${err}"/>
+                            </ul>
+                        </div>
                         <div class="row">
                             <div class="form-group col-12">
-                                <label for="name">Category</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="" required="required">
+                                <label for="name">Category *</label>
+                                <input type="hidden" th:field="*{id}">
+                                <input type="text" class="form-control" th:field="*{name}" placeholder="Name of the category" required="required">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-12">
-                                <label for="description">Description</label>
-                                <textarea class="form-control" rows="10" id="description" name="description"></textarea>
+                                <label for="description">Description *</label>
+                                <textarea class="form-control" rows="10" th:field="*{description}" required="required"></textarea>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" title="Save category" class="btn btn-primary">Save</button>
                     </form>
                 </div>
             </div>

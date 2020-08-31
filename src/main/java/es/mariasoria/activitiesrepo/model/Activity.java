@@ -8,8 +8,12 @@ import javax.persistence.*;
  * This class represents the model for an activity
  */
 
+@Entity
+@Table(name="Activities")
 public class Activity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String age; // suitable ages
@@ -17,7 +21,10 @@ public class Activity {
     private String goal; // goal of the activity
     private String description;
 
-    private String category;
+
+    @OneToOne
+    @JoinColumn(name="idCategory")
+    private Category category;
 
     public Integer getId() {
         return id;
@@ -67,12 +74,12 @@ public class Activity {
         this.description = description;
     }
 
-    public String getCategory() {
+    public Category getIdCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setIdCategory(Category idCategory) {
+        this.category = idCategory;
     }
 
     @Override
