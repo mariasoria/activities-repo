@@ -50,7 +50,7 @@ public class ActivitiesController {
     public String saveActivity(Activity activity, BindingResult result, RedirectAttributes attributes){
         if(result.hasErrors()){
             for (ObjectError error: result.getAllErrors()){
-                System.out.println("Ocurrio un error: " + error.getDefaultMessage());
+                System.out.println("An error happened: " + error.getDefaultMessage());
             }
             return "activities/formActivity";
         }
