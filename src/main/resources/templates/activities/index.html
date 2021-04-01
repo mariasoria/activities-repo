@@ -31,7 +31,7 @@
                     <h1 th:text="${activity.name}"></h1>
                 </div>
                 <div class="col-sm-12 col-md-7 text-sm-center text-md-left"> <!--col-md-9 -->
-                    <h6 class="card-title"><strong>Category: </strong> <span> </span></h6>
+                    <h6 class="card-title"><strong>Category: </strong> <span th:text="${activity.idCategory.name}"> </span></h6>
                     <h6 class="card-title"><strong>Suitable ages: </strong> <span th:text="${activity.age}"> </span></h6>
                     <!-- <p th:text="${activity.description}"></p> -->
                     <p><a class="btn btn-secondary" th:href="@{/activities/details/{id} (id=${activity.id})}" role="button">View details &raquo;</a></p>

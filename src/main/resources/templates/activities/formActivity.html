@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Activities Repo | New activity</title>
+    <title>Activities Repo | Activity</title>
     <!-- Bootstrap core CSS -->
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -28,8 +28,7 @@
                 <div class="card-body">
                     <form th:action="@{/activities/save}" method="post" th:object="${activity}">
                         <div th:if="${#fields.hasErrors('*')}" class='alert alert-danger' role='alert'> Por favor corrija los siguientes errores:
-                            <ul>
-                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}" /> </ul>
+                            <ul><li th:each="err : ${#fields.errors('*')}" th:text="${err}" /></ul>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-6">
@@ -42,7 +41,7 @@
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <label for="category">Category *</label>
-                                    <select class="form-control" th:field="*{idCategory}" id="category" name="category" required="required">
+                                    <select class="form-control" th:field="*{idCategory.id}" id="category" name="category" required="required">
                                         <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
                                     </select>
                                 </div>
@@ -51,13 +50,12 @@
                         <hr>
                         <div class="row">
                             <div class="form-group col-sm-12 col-md-4">
-                                <label for="age">Ages *</label>
+                                <label for="age">Ages * (Select only one)</label>
                                 <select multiple class="custom-select"  id="age" name="age" required="required">
-                                    <option>6-8</option>
-                                    <option>8-10</option>
-                                    <option>10-12</option>
-                                    <option>12-14</option>
-                                    <option>14-</option>
+                                    <option th:each="i : ${ages}"
+                                            th:value="${i}"
+                                            th:text="${i}"
+                                            th:selected="${activity.age==i}"></option>
                                 </select>
                             </div>
                             <div class="form-group col-sm-12 col-md-4">
@@ -101,6 +99,5 @@
                 "| bullist numlist outdent indent | forecolor backcolor table code"
         });
     </script>
-
 </body>
 </html>

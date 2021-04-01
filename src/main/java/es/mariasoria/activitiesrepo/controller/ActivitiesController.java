@@ -1,16 +1,17 @@
 package es.mariasoria.activitiesrepo.controller;
 
 import es.mariasoria.activitiesrepo.model.Activity;
-import es.mariasoria.activitiesrepo.model.Category;
 import es.mariasoria.activitiesrepo.service.ActivitiesService;
 import es.mariasoria.activitiesrepo.service.CategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -32,7 +33,9 @@ public class ActivitiesController {
     // Displays the view with the details of the activity specified by id
     @GetMapping("/details/{id}")
     public String showActivity(@PathVariable ("id") int idActivity, Model model){
-        model.addAttribute("activity", serviceActivity.findById(idActivity));
+        Activity activity = serviceActivity.findById(idActivity);
+        model.addAttribute("activity", activity);
+        System.out.println("DETAIL: ACTIVITY -- Category??? " + activity);
         return "detail";
     }
 
@@ -46,16 +49,18 @@ public class ActivitiesController {
     @PostMapping("/save")
     public String saveActivity(Activity activity, BindingResult result, RedirectAttributes attributes){
         if(result.hasErrors()){
+            for (ObjectError error: result.getAllErrors()){
+                System.out.println("Ocurrio un error: " + error.getDefaultMessage());
+            }
             return "activities/formActivity";
         }
-        attributes.addFlashAttribute("msg", "Activity saved");
+        attributes.addFlashAttribute("msg", "Activity has been saved successfully");
         // cuando llegue el objeto activity al controlador
         // se agregara directamente a nuestra lista
         serviceActivity.saveActivity(activity);
         System.out.println("Activity SAVE: " + activity);
         // redirect to the index view
-        return "redirect:/index";
-        //return "redirect:/activities/create";
+        return "redirect:/activities/index";
     }
 
     // @DeleteMapping("/delete")
@@ -75,7 +80,8 @@ public class ActivitiesController {
     @ModelAttribute
     public void setGeneric (Model model){
         model.addAttribute("categories", categoriesService.findAll());
-
+        List<String> ages = Arrays.asList("6-8", "8-10", "10-12", "12-14", "14-");
+        model.addAttribute("ages", ages);
     }
 
 
